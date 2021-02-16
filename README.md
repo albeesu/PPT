@@ -1,1 +1,6 @@
 # PPT
+目前用來放置練習用的ppt
+將來或許會增加報告用的ppt
+
+# ppt連結
+https://albeesu.github.io/PPT/practice/index.html
