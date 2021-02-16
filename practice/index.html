@@ -1,0 +1,77 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+	</head>
+	<body>
+	<div class="reveal">
+	<div class="slides">
+		<section data-background-image="image/image-1.PNG" data-background-opacity=".4">
+		<h1>報告主題</h1>
+		<p>蘇慧芸</p>
+		</section>
+		
+		<section>
+					<h2>目錄</h2>
+					<ul>
+						<li>介紹</li>
+						<li><a href="https://revealjs.com/api/">目錄一</a></li>
+						<li><a href="https://revealjs.com/auto-slide/">目錄二</a></li>
+						<li><a href="https://revealjs.com/backgrounds/#parallax-background">目錄三</a></li>
+						<li><a href="https://revealjs.com/keyboard/">目錄四</a></li>
+					</ul>
+				</section>
+		<section>
+					<h2>Export to PDF</h2>
+					<p>Presentations can be <a href="https://revealjs.com/pdf-export/">exported to PDF</a>, here's an example:</p>
+					<iframe data-src="https://www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+		</section>
+		<section>
+			<section data-transition="fade" data-background-color="white">
+			<h1><span style="color:orange;">Javascript</span></h1>
+			</section>
+			<section data-transition="convex" data-background-color="green">
+			<h1>Vue</h1> 
+			</section>
+			<section data-transition="concave" data-background-color="#61dafb">
+			<h1>React</h1> 
+			</section>
+			<section data-transition="zoom" data-background-color="#b32535">
+			<h1>Angular</h1>
+			</section>
+		</section>
+		<section>
+			<h1>NodeJS</h1>
+				<pre><code data-trim data-noescape>
+				const fs = require('fs')
+				const Koa = require('koa')
+				const app = new Koa()
+				</code></pre>
+		</section>
+		<section>
+			<h3>字幕顯示</h3>
+			<p class="fragment">字幕1</p>
+			<p class="fragment">字幕2</p>
+			<p class="fragment">字幕3</p>
+		</section>
+		<section>
+	<h1>THE END</h1>
+	</section>
+	</div>
+	</div>
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+		<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+		hash: true,
+		// Learn about plugins: https://revealjs.com/plugins/
+		plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+		});
+		</script>
+	</body>
+</html>
