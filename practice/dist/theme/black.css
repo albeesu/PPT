@@ -30,7 +30,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
   --heading3-size: 1.3em;
   --heading4-size: 1em;
   --code-font: monospace;
-  --link-color: #42affa;
+  --link-color: #a8ddcd;
   --link-color-hover: #8dcffc;
   --selection-background-color: #bee4fd;
   --selection-color: #fff; }
@@ -270,7 +270,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
   transition: all .15s linear; }
 
 .reveal a:hover .r-frame {
-  border-color: #42affa;
+  border-color: #a8ddcd;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }
 
 /*********************************************
