@@ -4,4 +4,4 @@
 
 # ppt連結
 https://albeesu.github.io/PPT/practice/index.html<br>
-https://albeesu.github.io/PPT/md5php/demo.html
+https://albeesu.github.io/PPT/md5/demo.html
