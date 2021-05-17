@@ -29,7 +29,7 @@
 	<div class="reveal">
 	<div class="slides">
 		<section data-background-image="image/image-1.PNG" data-background-opacity=".4">
-		<h1>MD5介紹<br>MD5 PHP漏洞</h1>
+		<h1>Hash介紹<br>MD5 PHP漏洞</h1>
 		<p>資工四s10659033蘇慧芸</p>
 		</section>
 		
@@ -40,6 +40,7 @@
 				<p><li><a href="demo.html#/3">雜湊函數應用  </a></li></p>
 				<p><li><a href="demo.html#/4">實作  </a></li></p>
 				<p><li><a href="demo.html#/5">MD5 PHP漏洞  </a></li></p>
+				<p><li><a href="demo.html#/6">結論  </a></li></p>
 			</ol>
 		</section>
 		<section>
@@ -63,9 +64,9 @@
 			</section>
 			<section>
 				
-				<p class="fragment">但是</p>
+				<p class="fragment">雖然</p>
 				<p class="fragment">不同輸入得到相同輸出的機率非常<strong><font color="#FF6363">低</font></strong></p>
-				<p class="fragment">對的 還是有機率會產生一樣的輸出</p>
+				<p class="fragment">但是還是有機率會產生一樣的輸出</p>
 				<p class="fragment">畢竟輸入是<strong><font color="#FF6363">無限的</font></strong>，輸出是<strong><font color="#FF6363">有限的</font></strong></p>
 				<p class="fragment">因此會產生<strong><font color="#FF6363">雜湊碰撞(Hash Collision)</font></strong></p>
 			
@@ -76,7 +77,7 @@
 				<ul>
 				<p><li class="fragment">SHA系列:SHA-1、SHA-2</li></p>
 				<p><li class="fragment">MD系列:MD3、MD4、MD5</li></p>
-				<p><li class="fragment">BLAKE系列:BLAKE、BLAKE2、BLAKE</li></p>
+				<p><li class="fragment">BLAKE系列:BLAKE、BLAKE2、BLAKE3</li></p>
 				</ul>
 			</section>
 			
@@ -94,15 +95,16 @@
 			<section>
 				<h3>資安風險</h3>
 				<ul>
+				<center><img  class="fragment" src="image/image-2.png" ></center>
 				<p><li class="fragment"><strong><font color="#FFCC66">網站管理者</font></strong>隨時能夠查看<strong><font color="#FFCC66">使用者帳密</font></strong></li></p>
 				<p><li class="fragment">如果有駭客成功<strong><font color="#a9d18e">入侵資料庫</font></strong>，即可<strong><font color="#a9d18e">竊取所有使用者資料</font></strong>竊取所有使用者資料</li></p>
-				<center><img  class="fragment" src="image/image-2.png" ></center>
+				
 				</ul>
 				<!-- #a9d18e -->
 			</section>
 			<section>
-				<p class="fragment">雜湊為單向的</li></p>
-				<p class="fragment">無法用函數去回推原始資料</li></p>
+				<p class="fragment"><strong>雜湊為<font color="#66dcff">單向的</font></strong></li></p>
+				<p class="fragment"><strong>無法用函數去<font color="#66dcff">回推</font>原始資料</strong></li></p>
 			</section>
 			<section>
 				<h3>常見攻擊方法</h3>
@@ -163,6 +165,10 @@
 			</section>
 			<section>
 				<img  class="" src="image/image-6.png " style="width:auto;height:700px;">
+			</section>
+			<section>
+				<center><img src="image/MD5-2.png "style="width:auto;height:600px;"></center>
+				
 			</section>
 			<section>
 					<h2 data-id="code-title">JS原始程式碼實作</h2>
@@ -449,6 +455,218 @@ function binl2b64(binarray)
 				</script>
 				
 			</section>
+			<section>
+					<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/sha1-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/lib-typedarrays-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/q.js/1.4.1/q.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/spark-md5/2.0.2/spark-md5.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet'></link>
+
+<html>
+<head>
+<style>
+textarea, #showbox { border: 3px solid #9f9f9f; }
+.myButton {
+	box-shadow: 0px 0px 0px -7px #276873;
+	background:linear-gradient(to bottom, #8ac5db 5%, #408c99 100%);
+	background-color:#8ac5db;
+	border-radius:9px;
+	border:2px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:25px;
+	font-weight:bold;
+	padding:8px 16px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #408c99 5%, #8ac5db 100%);
+	background-color:#408c99;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+.prompttest {
+	box-shadow: 0px 0px 0px -7px #276873;
+	background:linear-gradient(to bottom, #8ac5db 5%, #408c99 100%);
+	background-color:#8ac5db;
+	border-radius:9px;
+	border:2px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:25px;
+	font-weight:bold;
+	padding:8px 16px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
+}
+
+.prompttest:hover {
+	background:linear-gradient(to bottom, #408c99 5%, #8ac5db 100%);
+	background-color:#408c99;
+}
+.prompttest:active {
+	position:relative;
+	top:1px;
+}
+</style>
+</head>
+<body>
+
+<script>
+<!-- SHA512 = require('crypto-js/sha512'); -->
+var global="";
+function saveTextAsFile( _fileName, _text ) {
+    var textFileAsBlob = new Blob([_text], {type:'text/plain'});
+
+    var downloadLink = document.createElement("a");
+    downloadLink.download = _fileName;
+    downloadLink.innerHTML = "Download File";
+    if (window.webkitURL != null) {
+        // Chrome allows the link to be clicked
+        // without actually adding it to the DOM.
+        downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+    } else {
+        // Firefox requires the link to be added to the DOM
+        // before it can be clicked.
+        downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+        downloadLink.onclick = destroyClickedElement;
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+    }
+
+    downloadLink.click();
+}
+
+function destroyClickedElement(event) {
+    document.body.removeChild(event.target);
+}
+
+$(document).ready(function () {
+   
+	$("#btn").click(function () {
+        var reader = new FileReader(); //define a Reader
+        var file = $("#file")[0].files[0]; //get the File object 
+        if (!file) {
+            alert("no file selected");
+            return;
+        } //check if user selected a file
+
+        reader.onload = function (f) {
+            var file_result = this.result; // this == reader, get the loaded file "result"
+            var file_wordArr = CryptoJS.lib.WordArray.create(file_result); //convert blob to WordArray , see https://code.google.com/p/crypto-js/issues/detail?id=67
+            var sha1_hash = CryptoJS.MD5(file_wordArr); //calculate SHA1 hash
+            console.log("Calculated MD5:" + sha1_hash.toString()); //output result
+			document.getElementById("showbox").innerHTML =("Calculated MD5:" + sha1_hash.toString());
+			global=sha1_hash.toString();
+        };
+        reader.readAsArrayBuffer(file); //read file as ArrayBuffer
+    });
+	 $("#btn1").click(function () {
+        var reader = new FileReader(); //define a Reader
+        var file = $("#file")[0].files[0]; //get the File object 
+        if (!file) {
+            alert("no file selected");
+            return;
+        } //check if user selected a file
+
+        reader.onload = function (f) {
+            var file_result = this.result; // this == reader, get the loaded file "result"
+            var file_wordArr = CryptoJS.lib.WordArray.create(file_result); //convert blob to WordArray , see https://code.google.com/p/crypto-js/issues/detail?id=67
+            var sha1_hash = CryptoJS.SHA1(file_wordArr); //calculate SHA1 hash
+            //console.log("Calculated SHA1:" + sha1_hash.toString()); //output result
+			document.getElementById("showbox").innerHTML =("Calculated SHA1:" + sha1_hash.toString());
+			global=sha1_hash.toString();
+        };
+        reader.readAsArrayBuffer(file); //read file as ArrayBuffer
+    });
+	
+	$("#btn4").click(function () {
+         var TextRange = document.createRange();
+		TextRange.selectNode(document.getElementById("showbox"));
+		sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(TextRange);
+		document.execCommand("copy");
+		alert("複製完成！") //此行可加可不加
+    });
+	$("#btn5").click(function () {
+        saveTextAsFile("hash.txt",global);
+    });
+	function CopyTextToClipboard(id) {
+		var TextRange = document.createRange();
+		TextRange.selectNode(document.getElementById(id));
+		sel = window.getSelection();
+			sel.removeAllRanges();
+			sel.addRange(TextRange);
+		document.execCommand("copy");
+		alert("複製完成！") //此行可加可不加
+  }
+});
+
+
+<!-- 比對 -->
+</script>
+
+
+
+<div>
+ <!-- 檔案路徑: <input type="text" id="path"/>    -->
+
+ <!-- <br><input type="file" id="file"/><br><br> -->
+<label class="btn btn-info">
+<input id="file" style="display:none;" type="file">
+<i class="fa fa-photo"></i> 上傳檔案<br>
+<input type="button" id="btn"  value="  MD5  " class="myButton" />
+<input type="button" id="btn1" value=" SHA-1 " class="myButton" />
+
+<input type="button" id="btn4" value="複製結果" class="myButton"  />
+<input type="button" id="btn5" value="輸出檔案" class="myButton"  />
+<input class='prompttest' type="button" value="比對輸入">
+<p class='show'></p>
+<script>
+	var button = document.querySelector('.prompttest');
+	
+        var showtxt = document.querySelector('.show');
+
+        function popup3(e) {
+            var guest = window.prompt('請輸入比對資料', '');
+            if (guest == null || "") {
+                showtxt.innerHTML = '您已取消輸入'
+            } else {
+				if(guest==global){
+					showtxt.innerHTML = "比對正確";
+				}
+                else{
+					showtxt.innerHTML = "比對錯誤";
+				}
+            }
+
+        }
+    button.addEventListener('click', popup3);
+	
+</script>
+  <br>
+顯示結果
+<center>
+<div id="showbox" style="width:100%; height:300px;"></div>
+</center>
+  <table><tr>
+<td>
+
+</td>
+</tr></table>
+</div>	
+			</section>
 		</section>
 		<section>
 			<section>
@@ -456,18 +674,19 @@ function binl2b64(binarray)
 			</section>
 			<section>
 				<h2 data-id="code-title">PHP</h2>
-				<pre><code class="hljs" data-trim data-line-numbers=" |1-2|3">
+				<pre><code class="hljs" data-trim data-line-numbers=" |1-2|4">
 				<script type="text/template">
-				$encode3="0";
-				$encode4="0e123";
-				if($encode3==$encode4){
-					echo "true";
+				$str1 = 'HELLO';
+				$str2 = 'HIHI';
+
+				if(md5($str1)==md5($str2)){
+					echo "TRUE";
 				}
 				else{
-					echo "false";
+					echo "FALSE";
 				}
 			</script></code></pre>
-				<p class="fragment">答案為<strong><font color="#FF6363">TRUE</font></strong></p>
+				<p class="fragment">答案為<strong><font color="#FF6363">FALSE</font></strong></p>
 			</section>
 			<section>
 				<h2 data-id="code-title">PHP</h2>
@@ -477,10 +696,25 @@ function binl2b64(binarray)
 				$str2 = 's878926199a';
 
 				if(md5($str1)==md5($str2)){
-					echo "true";
+					echo "TRUE";
 				}
 				else{
-					echo "false";
+					echo "FALSE";
+				}
+			</script></code></pre>
+				<p class="fragment">答案為<strong><font color="#FF6363">TRUE</font></strong></p>
+			</section>
+			<section>
+				<h2 data-id="code-title">PHP</h2>
+				<pre><code class="hljs" data-trim data-line-numbers=" |1-2|3">
+				<script type="text/template">
+				$encode3="0";
+				$encode4="0e123";
+				if($encode3==$encode4){
+					echo "TRUE";
+				}
+				else{
+					echo "FALSE";
 				}
 			</script></code></pre>
 				<p class="fragment">答案為<strong><font color="#FF6363">TRUE</font></strong></p>
@@ -489,21 +723,32 @@ function binl2b64(binarray)
 				<h2 data-id="code-title">PHP</h2>
 				<pre><code data-trim>
 				<script type="text/template">
-				"0e132456789"=="0e7124511451155" //true
-				"0e123456abc"=="0e1dddada" //false
-				"0e1abc"=="0"  //true
+				"0e132456789"=="0e7124511451155" //TRUE
+				"0e123456abc"=="0e1dddada" //FALSE
+				"0e15675"=="0"  //TRUE
 			</script></code></pre>
 				<p class="fragment">如果字串裡為<strong><font color="#FFCC66">0e/d</font></strong></p>
 				<p class="fragment">那麼將會被解析為是<strong><font color="#FFCC66">科學計數法</font></strong></p>
 			</section>
+			
 			<section>
-				<p class="fragment">導致如果今天資訊經由MD5雜湊過後</p>
-				<p class="fragment">只要是0e/d開頭的</p>
-				<p class="fragment">都會被視為0</p>
+				<p class="fragment">導致如果今天資訊經由<strong><font color="#FFCC66">MD5雜湊過後</font></strong></p>
+				<p class="fragment">只要是<strong><font color="#FFCC66">0e/d開頭的</font></strong></p>
+				<p class="fragment">都會被視為<strong><font color="#FFCC66">0</font></strong></p>
+			</section>
+			<section>
+				<h3>強型別語言 VS 弱型別語言</h3>
+				<p class="fragment"><strong><font color="#e6aecf">強型別語言(strongly typed)</font></strong><br>不容許型別轉換，型別檢查上較為嚴格</p>
+				<p class="fragment"><strong><font color="#9d72ff">弱型別語言(weakly typed)</font></strong><br>容許型別轉換，型別檢查上較為寬鬆</p>
+			</section>
+			<section>
+				<h3>強型別語言 VS 弱型別語言</h3>
+				<p class="fragment"><strong><font color="#e6aecf">強型別語言(strongly typed)</font></strong>：Java, C#, Python</p>
+				<p class="fragment"><strong><font color="#e6aecf">弱型別語言(weakly typed)</font></strong>：C/C++, <strong><font color="#FFCC66">PHP</font></strong>, JavaScript</p>
 			</section>
 			<section>
 				<p class="fragment">解決辦法</p>
-				<p class="fragment">使用= = =</p>
+				<p class="fragment">使用<strong><font color="#a9d18e">= = =</font></strong></p>
 				<p class="fragment">讓他不會自動轉換</p>
 			</section>
 			<section>
@@ -514,17 +759,32 @@ function binl2b64(binarray)
 				$str2 = 's878926199a';
 
 				if(md5($str1)===md5($str2)){
-					echo "true";
+					echo "TRUE";
 				}
 				else{
-					echo "false";
+					echo "FALSE";
 				}
 			</script></code></pre>
-				<p class="fragment">答案為false</p>
+				<p class="fragment">答案為<strong><font color="#FF6363">FALSE</font></strong></p>
 			</section>
 		</section>
-		
 	<section>
+		<section>
+			<h2 data-id="code-title">結論</h2>
+		</section>
+		<section>
+			<p class="fragment">不管在於哪種雜湊方法</p>
+			<p class="fragment">都無法防範<strong><font color="#a9d18e">窮舉法</font></strong>這種破解方式</p>
+			<p class="fragment">只能不斷加強安全性</p>
+			<p class="fragment">讓破解方法變得更有難度</p>
+			<p class="fragment">也就需要花更多的時間</p>
+			<p class="fragment">來進行破解</p>
+			<p class="fragment">但<strong><font color="#a9d18e">沒有永遠的安全</font></strong></p>
+			<p class="fragment">如何去<strong><font color="#a9d18e">防範資安風險是我們所需考量的</font></strong></p>
+		</section>
+	</section>
+	<section>
+	
 	<h1>THE END</h1>
 	</section>
 	</div>
